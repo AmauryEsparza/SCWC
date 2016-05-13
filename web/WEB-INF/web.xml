@@ -44,6 +44,25 @@
         <url-pattern>/ex0302/*</url-pattern>
     </servlet-mapping>
 
+    <!--Servlet declaration-->
+    <servlet>
+        <servlet-name>Dispatcher</servlet-name>
+        <servlet-class>webcert.ch03.ex0303.Dispatcher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dispatcher</servlet-name>
+        <url-pattern>/ex0303/Dispatcher</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Receiver</servlet-name>
+        <servlet-class>webcert.ch03.ex0303.Receiver</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Receiver</servlet-name>
+        <url-pattern>/ex0303/Receiver</url-pattern>
+    </servlet-mapping>
+
+
 
     <context-param>
         <param-name>propsFileName</param-name>

@@ -28,3 +28,7 @@ Multithreading and Context Attributes.
     Each and every client requesting thread to a web application can potencially update a servlet context attribute. So worry about thread safety
     1. Set up this attributes in the init() that loads on the startup servlet. Treat this attributes as read property only (getAttribute)
     2. If there context atrributes where you don't have option sorround the updates with synchronized blocks
+
+Filters and Wrappers
+    Their main purpose is to intervene before and after request for a web resource.
+    The filter will trap the response from the web resource.
