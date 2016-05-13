@@ -62,6 +62,24 @@
         <url-pattern>/ex0303/Receiver</url-pattern>
     </servlet-mapping>
 
+    <!--Servlet declaration-->
+    <servlet>
+        <servlet-name>MicroPayment</servlet-name>
+        <servlet-class>webcert.ch03.ex0304.MicroPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MicroPayment</servlet-name>
+        <url-pattern>/ex0304/Micropayment</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>MicroPaymentFilter</filter-name>
+        <filter-class> webcert.ch03.ex0304.MicroPaymentFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MicroPaymentFilter</filter-name>
+        <servlet-name>MicroPayment</servlet-name>
+    </filter-mapping>
+
 
 
     <context-param>
