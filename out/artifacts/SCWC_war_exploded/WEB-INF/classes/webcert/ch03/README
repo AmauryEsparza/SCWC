@@ -1,0 +1,30 @@
+Context Initilization params vs Servlet Initialization params
+    The Servlet Initilization parameters are defined inside the <Servlet> tag as a <init-params> so are only accesible in the containing servlet
+    The Context Initilization parameter are defined inside the <web-app> tag as a <context-param> and are accesible for web application level
+
+Attributes & Parameters
+    Parameters whatever scope are read-only. Only find get methods for them.
+    Attributes are read/write from al scopes request, session, context.
+
+Scopes
+    Scope describes the lifetime and availability of web application artifacts
+
+    Request Scope
+        Request scope Lasts for the moment an HTTP request hits a servlet in your web container to the moment the servlet is done with delivering the HTTP response.
+        In other words the request scope is available when entry to the service() method to the end of this method.
+        ServletRequest for non-HTTP servlet container
+        When using a RequestDispatcher to other Servlt the request scope remains to the following Servlet.
+    Session Scope
+        Last for the moment where the web browser make contact with the web application up to the point where the web browser is closed.
+        On the server side the session is represented by an object implementing the HttpSession.
+        The idea is that the successive requests from the same browser window will each obtain the same session object each time.
+    Context (Application) scope.
+
+    Scenario & Solution
+        You have information retreived from a database, which is required for a
+
+Multithreading and Context Attributes.
+    Represent the opposite extreme from the request.
+    Each and every client requesting thread to a web application can potencially update a servlet context attribute. So worry about thread safety
+    1. Set up this attributes in the init() that loads on the startup servlet. Treat this attributes as read property only (getAttribute)
+    2. If there context atrributes where you don't have option sorround the updates with synchronized blocks
