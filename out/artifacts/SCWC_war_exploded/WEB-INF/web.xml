@@ -80,7 +80,15 @@
         <servlet-name>MicroPayment</servlet-name>
     </filter-mapping>
 
-
+    <!--Servlet declaration-->
+    <servlet>
+        <servlet-name>SessionDisplayer</servlet-name>
+        <servlet-class>webcert.ch04.ex0401.SessionDisplayer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDisplayer</servlet-name>
+        <url-pattern>/ex0401/SessionDisplayer</url-pattern>
+    </servlet-mapping>
 
     <context-param>
         <param-name>propsFileName</param-name>
