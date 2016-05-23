@@ -90,6 +90,32 @@
         <url-pattern>/ex0401/SessionDisplayer</url-pattern>
     </servlet-mapping>
 
+    <!--Servlet declaration-->
+    <servlet>
+        <servlet-name>SessionDisplayer2</servlet-name>
+        <servlet-class>webcert.ch04.ex0402.SessionDisplayer2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDisplayer2</servlet-name>
+        <url-pattern>/ex0402/SessionDisplayer</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet declaration-->
+    <servlet>
+        <servlet-name>SetContextAttributes</servlet-name>
+        <servlet-class>webcert.ch04.ex0403.SetContextAttributes</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SetContextAttributes</servlet-name>
+        <url-pattern>/ex0403/SetContextAttributes</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>webcert.ch04.ex0403.MyContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>webcert.ch04.ex0403.MyContextAttributeListener</listener-class>
+    </listener>
     <context-param>
         <param-name>propsFileName</param-name>
         <param-value>/WEB-INF</param-value>

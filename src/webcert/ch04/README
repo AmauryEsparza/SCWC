@@ -11,3 +11,46 @@ SESSION DEATH
         1. In the Application Server: different for every server
         2. Web Deployment Descriptor: by the <session-config>'s <session-timeout> tag
         3. Individual session setting: using HttpSession.getMaxInteractiveInteval(int seconds)
+
+SESSION MANAGEMENT
+    PRINCIPLES
+        Each request must have an unique ID use the HttpSession.getId() method once you have a request.
+        The web applicatino will allocate this unique ID on the first request from the client.
+        The ID must be passed back to the client so that the client can pass it again with the next request.
+    COOKIES
+        Small text file that the client stores in disk.
+        In J2EE web applications the cookie returned has a standard name JSESSIONID (Not HR).
+        HttpServletRequest.getCookies() matches with the session ID of HttpSession.getId().
+        The cookies can be disabled from the user for security reasons. Use the URL Rewriting instead.
+    URL REWRITING (TODO: go deeper about this topic)
+        The approach is send a jsessionid for every request as a URL param. (Hard to accomplish for every request unless you have a servlet generating this webpages)
+        HttpServletResponse.encodeUrl(String url) returns the urlString with the jsessionid embedded.
+    REQUEST METHODS
+        There are two method from HttpServletRequest to identify which of the two methods are in use.
+        HttpServletRequest.isRequestedSessionIdFromCookie();
+        HttpServletRequest.isRequestedSessionIdFromURL();
+        There are circumstances that both methods return false in the following cases:
+            for SSL session.
+            when the session is new
+
+REQUEST & CONTEXT LISTENERS
+    ServletRequestListener
+    ServletContextListener
+    ServletRequestAttributeListener
+    ServletContextAttributeListener
+
+    The listener are executed as the order you put them.
+    No argument constructor and also some listener methods could DO-NOTHING.
+
+    REQUEST LISTENER (ServletRequestListener)
+    Listener has to implement the requestInitialized() and requestDestroyed() methods.
+    The requestInitialized() is called when every request scope is performed. In other words, in the beginning of the Servlet.service()
+    The requestDestroyed() is also called when the service method is about to finish
+
+    CONTEXT LISTENER (ServletContextListener)
+        The context listener works as a Listener.
+        The ServletContextListener.contextInitialized() is the right place to initialize the fundamental parameters for the Web Application.
+
+
+
+    

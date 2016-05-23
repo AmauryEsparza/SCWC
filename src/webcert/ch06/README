@@ -1,0 +1,58 @@
+JSP
+    Compilation process
+        JSP source code -> Syntax checking -> Code generation -> Generated servlet source code -> Compilation -> Compiled Servlet class
+
+    If you want to suppress direct access to a JSP (so that users have to go through a registered name and a servlet mapping), locate the JSP page under WEB-INF.
+    You can override the jspInit & the jspDestroy methods.
+    You must not override the servlet init(ServletConfig), destroy() or _jspService() method.
+    JSP code <%! %> you can declare Java methods
+    Sriptlet code <% %> doesn't include any kind of method, THE CODE IS INCLUDED IN THE _jspService() method.
+    The translated files you can find them in the following root
+        glassfish4/glassfish/domains/domain1/generated/jsp/<ApplicationName>
+
+    ANATOMY OF JSP PAGES
+        TEMPLATE TEXT -> refers to the "Unchanged text", the text that is replaced in the servlet like out.print (static content)
+        ELEMENTS -> something that needs to be translated or evaluated. (All that use the <% %> tags)
+            DIRECTIVE -> Used to communicate global information for the webpage. (ie. use the directive to import classes that you need, these is translated as an import statement in the Java code)
+            SCRIPTING
+                EL
+                TRADITIONAL
+                    EXPRESSIONS -> To place some output directly <%= %> If for a reason the expression return void, the JSP page will fail at translation time.
+                    SCRIPTLETS -> More extended pieces of Java code, added in the _jspService() method <% %>. The local variables can be used in other scriptlets
+                    DECLARATIONS -> Any piece of Java code that needs to exist in the generated Servlet (outside the _jspService), could be class members or whole methods. <%! %>. Declaration doesn't have access to implicit object.
+                    COMMENTS -> <%-- --%>
+            ACTION -> Use XML-style tags for the inclusion of dynamic data.
+                STANDARD (JSP contained)
+                CUSTOM (custom tags)
+
+
+        <%
+            String userInput = (String) request.getParameter("sentence");
+            if (userInput == null) {
+                userInput = "Antidisestablishmentarianism rules OK";
+            }
+        %>
+        <html>
+            <head><title>Sentence Analyzer</title></head>
+            <body>
+                <p>Type in a sample sentence to analyze:</p>
+                <form method="GET" action="sentenceAnalyzer.jsp">
+                    <input size="80" name="sentence" type="text" value="<%= userInput %>" />
+                    <br />
+                    <input type="submit" />
+                </form>
+                <p>Average length of word is <%=avgWordLength(userInput)%>.</p>
+            </body>
+        </html>
+        <%!
+            private double avgWordLength(String sentence) {
+                java.util.StringTokenizer st = new java.util.StringTokenizer(sentence, " ");
+                double wordCount = st.countTokens();
+                int totalChars = 0;
+                while (st.hasMoreTokens()) {
+                    totalChars += st.nextToken().length();
+                }
+                return totalChars / wordCount;
+            }
+        %>
+
