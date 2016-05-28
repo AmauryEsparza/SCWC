@@ -125,4 +125,9 @@
         <param-value>ex0301.properties</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>copyright</param-name>
+        <param-value>Amaury Esparza-2016 All right reserved </param-value>
+    </context-param>
+
 </web-app>

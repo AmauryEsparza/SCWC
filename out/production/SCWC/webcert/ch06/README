@@ -56,3 +56,30 @@ JSP
             }
         %>
 
+
+    DIRECTIVES <%@ %>
+        import DIRECTIVE
+            <%@ page import="java.util.*" %>
+
+        session DIRECTIVE
+            <%@ page session = "true" %> equivalent to HttpSession session = request.getSession();
+
+        contentType DIRECTIVE
+            <%@ page contentType="image/gif" %> response type
+
+        isELIgnored DIRECTIVE
+            <%@ page isELIgnored="true" %>
+                In example, these is the way to use the scriptlets for an square operation
+                    <% request.setAttribute("squareIt", new Integer(7)); %>
+                    <% int i = ((Integer)
+                        request.getAttribute("squareIt")).intValue(); %> <%= i * i %>
+                Using Expression Language, you could achieve the same result like this
+                    ${squareIt * squareIt}
+
+        include DIRECTIVE
+            Merge the contents of one JSP into another(the one doing the including) at translation time, no runtime
+                <%@ include file="/jsps/stubs/header.html" %>
+
+        taglib DIRECTIVE
+            Make custom activities
+                <%@ taglib prefix="mytags" uri="http://www.osborne.com/taglibs/mytags" %>
