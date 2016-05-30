@@ -83,3 +83,15 @@ JSP
         taglib DIRECTIVE
             Make custom activities
                 <%@ taglib prefix="mytags" uri="http://www.osborne.com/taglibs/mytags" %>
+
+
+    IMPLICIT OBJECTS: are the local objects inside the _jspService
+        request javax.servlet.http.HttpServletRequest
+        response javax.servlet.http.HttpServletRequest
+        application javax.servlet.ServletContext
+        config javax.servlet.ServletConfi g
+        session javax.servlet.http.HttpSession
+        out javax.servlet.jsp.JspWriter
+        pageContext javax.servlet.jsp.PageContext
+        page java.lang.Object
+        exception java.lang.Throwable
