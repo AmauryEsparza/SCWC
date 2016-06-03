@@ -1,0 +1,44 @@
+JSP standards, Actions, XML and EL
+
+    STANDARD ACTIONS
+        Standard actions are used for the same purpose as Java language scripting
+        <jsp:useBean>, <jsp:setBean>, <jsp:getBean>
+
+            BEANS
+                Are designed to instantiate Java objects.
+                The idea is that you can have Java components (classes), using reflection.
+                By interrogating the methods available on a JavaBean, a standard action can obtain information about the properties that the bean support
+                All the beans has to do the getter and setter.
+
+            STANDARD ACTIONS
+                Syntax: <prefix:tagname firstAttribute="value" secondAttribute="value"> ... </prefix:tagname>
+                <jsp:useBean/>
+                    Standard actions declares a JavaBean intance and associate this with a variable name.
+                    The JavaBean is available for use elsewhere in your JSP page like EL or scriptlets
+                    Usage
+                        <jsp:useBean id="theDog" class="animals.Dog" />
+                        id -> unique identifier
+                        class -> the class you are instantiating.
+                    As a jsp translation result, some complex code at the _jspService method.
+                    If no scope is defined, the page scope is added
+                    If the bean already exist, no other bean is created.
+
+                <jsp:setProperty/>
+                    Set a property to a specific bean.
+                    Usage
+                        <jsp:setProperty name="theDog" property="weight" value="6.4" />
+                        name -> the bean id.
+                        property -> the property on the bean.
+                        value -> the value assigned to the property.
+                    Some examples:
+                        <jsp:setProperty name="theDog" property="weight" value="<%= request.getParameter("dogWeight") %>" />
+                        is equals than
+                        <jsp:setProperty name="theDog" property="weight" param="dogWeight" />
+
+                <jsp:getProperty/>
+                    Get a value from a specific bean
+                    <jsp:getProperty name="theDog" property="weight" />
+
+
+
+
