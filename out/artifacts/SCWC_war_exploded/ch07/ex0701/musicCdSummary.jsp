@@ -10,7 +10,7 @@
 <jsp:setProperty name="musicCDBean" property="title" value="<%= request.getParameter("title") %>"/>
 <jsp:setProperty name="musicCDBean" property="artist" value="<%= request.getParameter("artist") %>"/>
 <jsp:setProperty name="musicCDBean" property="yearRelease" value="<%= Integer.parseInt(request.getParameter("yearRelease")) %>" />
-<jsp:setProperty name="musicCDBean" property="favoriteTrack" value="<%= request.getParameter("favoriteTrack") %>"/>
+<jsp:setProperty name="musicCDBean" property="favoriteTrack" value="<%= request.getParameter("favoriteTrack1") %>"/>
 <html>
 <head>
     <title>Title</title>

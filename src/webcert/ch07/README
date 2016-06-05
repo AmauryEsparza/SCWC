@@ -39,6 +39,42 @@ JSP standards, Actions, XML and EL
                     Get a value from a specific bean
                     <jsp:getProperty name="theDog" property="weight" />
 
+    DISPATCHING MECHANISMS
+
+        INCLUDE
+            <jsp:include>
+                This standard action can be used to include the response from another file within your JSP page output
+                Specify the file whose response should be included with the page attribute.
+                    <jsp:include page="pageToInclude.jsp" />
+
+            <jsp:include> vs <%@ include %>
+                When using <jsp:include>, and you have two jsp (a.jsp including b.jsp) the translation phase is performed separately and the a.jsp receive the response from b.jsp
+                When using <%@ include %> the translation phase is performed with the b.jsp included in the a.jsp code, and no response from b.jsp (runtime)
+
+        FORWARD
+            Used for forward some processing to another resource within the application within the webapplication
+
+            All the lines executed before the jsp:forward will be ignored even the last line of setAttribute.
+            <!- doThis.jsp -->
+            <p>You won't see this in the response</p>
+            <jsp:forward page="doThisInstead.jsp" />
+            <p>You won't see this either</p>
+            <% /* Will the following line of code be executed? */
+            session.setAttribute("doThis", "isDone"); %>
+
+        PARAMETERS
+            You can add different parameters even when you are using the jsp:include or jsp:forward
+            The parameters are added in the body of jsp:include or jsp:forward
+            Three important things about <jsp:param>
+                1. They only last for the duration of the include or forward. Once you're back in the including or forwarding JSP, the parameters disappear.
+                2. They don't replace existing parameters of the same name. Augment the list of values.
+                3. When they do arguments the list of values, their values come at the front of the list.
+
+
+
+
+
+
 
 
 
